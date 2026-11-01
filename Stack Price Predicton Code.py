@@ -7,9 +7,9 @@ from sklearn.model_selection import train_test_split
 
 np.random.seed(0)
 dates = pd.date_range(start="2023-01-01", periods=100)
-prices = 100 + np.random.randn(100).cumsum()  # Simulate random price fluctuations
+prices = 100 + np.random.randn(100).cumsum()  
 data = pd.DataFrame({'Date': dates, 'Price': prices})
-data['Day'] = np.arange(len(data))  # Create a numerical 'day' feature
+data['Day'] = np.arange(len(data))  
 
 X = data[['Day']]
 y = data['Price']
@@ -23,7 +23,7 @@ y_pred = model.predict(X)
 
 plt.figure(figsize=(10, 6))
 plt.plot(data['Date'], data['Price'], label='Actual Price')
-plt.plot(data['Date'], y_pred, label='Predicted Price', linestyle='--')
+plt.plot(data['Date'], y_pred, label='Predicted Price as per market', linestyle='--')
 plt.xlabel('Date')
 plt.ylabel('Price')
 plt.title('Stock Price Prediction')
@@ -36,5 +36,5 @@ print("\nSummary:")
 print(f"Model used: Linear Regression")
 print(f"Training data size: {len(X_train)}")
 print(f"Testing data size: {len(X_test)}")
-print(f"R-squared score: {model.score(X_test, y_test)}") # Evaluate the model
+print(f"R-squared score: {model.score(X_test, y_test)}") 
 print(f"Data generated:\n {data.head()}")
